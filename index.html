@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#123d2a" />
+  <meta name="description" content="Acik Vegan menghasilkan tempe segar daripada edamame, soya putih, soya hitam, kacang kuda dan lima jenis kacang." />
+  <meta property="og:title" content="Acik Vegan | Tempe Malaysia, Dibentuk Semula" />
+  <meta property="og:description" content="Tempe segar berasaskan tumbuhan, diinovasikan dengan lima jenis kekacang." />
+  <meta property="og:image" content="https://cdn.mingguanwanita.my/2026/07/Tempe-Malaysia-696x365.jpg.webp" />
+  <title>Acik Vegan | Tempe Malaysia, Dibentuk Semula</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #123d2a;
+      --forest-2: #1d573d;
+      --leaf: #8bae5c;
+      --lime: #dbe99a;
+      --cream: #f7f2e5;
+      --paper: #fffdf7;
+      --ink: #173126;
+      --muted: #67766d;
+      --brown: #9b6b45;
+      --line: rgba(23, 49, 38, .14);
+      --shadow: 0 24px 70px rgba(18, 61, 42, .14);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+    body.cart-open, body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; width: 100%; }
+
+    .announcement {
+      background: var(--forest);
+      color: white;
+      text-align: center;
+      padding: 10px 18px;
+      font-size: 13px;
+      letter-spacing: .03em;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 18px 28px;
+      background: rgba(247, 242, 229, .9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(23, 49, 38, .08);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      font-size: 21px;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50% 50% 48% 52%;
+      display: grid;
+      place-items: center;
+      background: var(--forest);
+      color: var(--lime);
+      transform: rotate(-7deg);
+      font-size: 21px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .ghost-btn, .cart-btn, .primary-btn, .secondary-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 19px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+    .ghost-btn {
+      background: rgba(18, 61, 42, .08);
+      color: var(--forest);
+    }
+    .ghost-btn:hover { background: rgba(18, 61, 42, .14); }
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: white;
+      background: var(--forest);
+    }
+    .cart-btn:hover, .primary-btn:hover { transform: translateY(-2px); background: #0b2c1d; }
+    .cart-count {
+      min-width: 24px;
+      height: 24px;
+      padding: 0 7px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--forest);
+      font-size: 12px;
+    }
+
+    .hero {
+      position: relative;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 68px 28px 92px;
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: -310px;
+      top: 40px;
+      background: radial-gradient(circle, rgba(219, 233, 154, .58), transparent 68%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.42);
+    }
+    .eyebrow i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--leaf);
+      box-shadow: 0 0 0 5px rgba(139,174,92,.15);
+    }
+    h1, h2, h3 { font-family: "Fraunces", serif; margin: 0; }
+    h1 {
+      margin-top: 24px;
+      font-size: clamp(58px, 7.7vw, 106px);
+      line-height: .91;
+      letter-spacing: -.065em;
+      max-width: 760px;
+    }
+    h1 em { color: var(--forest-2); font-style: italic; }
+    .hero-copy > p {
+      max-width: 590px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.72;
+    }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .primary-btn {
+      background: var(--forest);
+      color: white;
+      padding: 16px 24px;
+      box-shadow: 0 10px 25px rgba(18,61,42,.18);
+    }
+    .secondary-btn {
+      color: var(--forest);
+      background: transparent;
+      border: 1px solid rgba(18,61,42,.24);
+      padding: 15px 23px;
+    }
+    .secondary-btn:hover { background: var(--paper); transform: translateY(-2px); }
+    .proof-row {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 30px;
+      color: var(--forest);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .proof-row span { display: flex; align-items: center; gap: 9px; }
+    .proof-row b {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+    }
+
+    .hero-visual { position: relative; min-height: 620px; }
+    .hero-photo {
+      position: absolute;
+      inset: 10px 38px 46px 24px;
+      border-radius: 48% 48% 26px 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #d6c6a1;
+    }
+    .hero-photo img { height: 100%; object-fit: cover; }
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(18,61,42,.38), transparent 48%);
+    }
+    .floating-card {
+      position: absolute;
+      background: rgba(255,253,247,.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow: 0 22px 55px rgba(18,61,42,.18);
+      border-radius: 22px;
+      z-index: 2;
+    }
+    .floating-card.one {
+      right: 0;
+      top: 80px;
+      width: 188px;
+      padding: 17px;
+      transform: rotate(4deg);
+    }
+    .floating-card.two {
+      left: 0;
+      bottom: 34px;
+      width: 230px;
+      padding: 18px;
+      transform: rotate(-3deg);
+    }
+    .float-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+    .float-value { margin-top: 7px; font-family: "Fraunces", serif; font-size: 24px; line-height: 1.1; }
+    .bean-dots { display: flex; margin-top: 13px; }
+    .bean-dots i {
+      width: 25px;
+      height: 25px;
+      margin-left: -5px;
+      border-radius: 48% 52% 44% 56%;
+      border: 2px solid var(--paper);
+      background: #e4d5ac;
+    }
+    .bean-dots i:nth-child(2){ background:#5f493d; }
+    .bean-dots i:nth-child(3){ background:#9bc56f; }
+    .bean-dots i:nth-child(4){ background:#cfb57b; }
+    .bean-dots i:nth-child(5){ background:#292b28; }
+
+    .marquee {
+      overflow: hidden;
+      background: var(--forest);
+      color: var(--lime);
+      padding: 15px 0;
+      transform: rotate(-1deg) scale(1.01);
+    }
+    .marquee-track {
+      white-space: nowrap;
+      font-family: "Fraunces", serif;
+      font-size: 19px;
+      animation: marquee 24s linear infinite;
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    section { scroll-margin-top: 100px; }
+    .section-shell { max-width: 1240px; margin: 0 auto; padding: 110px 28px; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 42px;
+    }
+    .section-head h2 { font-size: clamp(42px, 5.2vw, 72px); letter-spacing: -.055em; line-height: 1; }
+    .section-head p { max-width: 470px; color: var(--muted); line-height: 1.7; margin: 0; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+    .product-card {
+      grid-column: span 4;
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid rgba(23,49,38,.08);
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .product-card:nth-child(4), .product-card:nth-child(5) { grid-column: span 6; }
+    .product-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .product-image { height: 292px; overflow: hidden; background: #e5dbc3; }
+    .product-image img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .product-card:hover .product-image img { transform: scale(1.045); }
+    .product-body { flex: 1; display: flex; flex-direction: column; padding: 24px; }
+    .tag-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(139,174,92,.15);
+      color: var(--forest);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .price { font-weight: 800; color: var(--forest); }
+    .product-body h3 { font-size: 29px; margin-top: 18px; letter-spacing: -.03em; }
+    .product-body p { color: var(--muted); line-height: 1.6; font-size: 14px; margin: 10px 0 22px; }
+    .add-btn {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 0;
+      background: var(--forest);
+      color: white;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+    .add-btn:hover { background: #0b2c1d; }
+    .add-btn span:last-child { font-size: 20px; }
+    .price-note { margin-top: 16px; color: var(--muted); font-size: 12px; text-align: right; }
+
+    .story-wrap {
+      background: var(--forest);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-wrap::before, .story-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(219,233,154,.08);
+    }
+    .story-wrap::before { width: 500px; height: 500px; left: -160px; bottom: -280px; }
+    .story-wrap::after { width: 340px; height: 340px; right: -120px; top: -140px; }
+    .story-grid {
+      position: relative;
+      z-index: 1;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 110px 28px;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 76px;
+      align-items: center;
+    }
+    .story-collage { position: relative; min-height: 570px; }
+    .story-main, .story-small {
+      position: absolute;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0,0,0,.25);
+    }
+    .story-main { inset: 0 100px 50px 0; border-radius: 150px 30px 30px 30px; }
+    .story-small { width: 235px; height: 270px; right: 0; bottom: 0; border-radius: 28px 90px 28px 28px; border: 9px solid var(--forest); }
+    .story-main img, .story-small img { height: 100%; object-fit: cover; }
+    .story-copy h2 { font-size: clamp(46px, 5vw, 74px); line-height: .98; letter-spacing: -.055em; }
+    .story-copy h2 em { color: var(--lime); font-style: italic; }
+    .story-copy > p { color: rgba(255,255,255,.72); line-height: 1.8; font-size: 17px; margin: 27px 0 0; }
+    .impact-list { display: grid; gap: 14px; margin-top: 30px; }
+    .impact-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 15px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+    }
+    .impact-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--forest); font-size: 20px; }
+    .impact-item b { display: block; margin-bottom: 4px; }
+    .impact-item small { color: rgba(255,255,255,.62); line-height: 1.45; }
+
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
+    .process-card {
+      min-height: 270px;
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255,253,247,.55);
+      border: 1px solid var(--line);
+      counter-increment: step;
+    }
+    .process-card::before {
+      content: "0" counter(step);
+      font-family: "Fraunces", serif;
+      font-size: 46px;
+      color: var(--leaf);
+    }
+    .process-card h3 { font-size: 24px; margin-top: 35px; }
+    .process-card p { color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    .stockist {
+      max-width: 1184px;
+      margin: 0 auto 110px;
+      padding: 54px;
+      border-radius: 36px;
+      background: var(--lime);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .stockist h2 { font-size: clamp(42px, 5vw, 70px); line-height: .98; letter-spacing: -.055em; }
+    .stockist p { color: rgba(23,49,38,.72); line-height: 1.7; }
+    .location-cards { display: grid; gap: 12px; }
+    .location-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.52);
+      border: 1px solid rgba(18,61,42,.1);
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .location-card i { width: 42px; height: 42px; display: grid; place-items: center; background: var(--forest); color: white; border-radius: 50%; font-style: normal; }
+    .location-card b { display: block; }
+    .location-card small { color: rgba(23,49,38,.65); }
+
+    .faq-grid { max-width: 900px; margin: 0 auto; }
+    details { border-top: 1px solid var(--line); padding: 22px 0; }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { list-style: none; cursor: pointer; font-weight: 800; display: flex; justify-content: space-between; gap: 20px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 23px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--muted); line-height: 1.7; max-width: 760px; }
+
+    footer { background: #0b281b; color: white; }
+    .footer-shell { max-width: 1240px; margin: 0 auto; padding: 68px 28px 24px; }
+    .footer-top { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 50px; }
+    .footer-brand p { color: rgba(255,255,255,.6); max-width: 430px; line-height: 1.7; }
+    .footer-col b { display: block; margin-bottom: 15px; color: var(--lime); }
+    .footer-col a { display: block; color: rgba(255,255,255,.68); margin: 10px 0; font-size: 14px; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      margin-top: 55px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,.48);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .cart-overlay, .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      background: rgba(6, 25, 17, .55);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      backdrop-filter: blur(5px);
+    }
+    .cart-overlay.show, .modal-overlay.show { opacity: 1; pointer-events: auto; }
+    .cart-drawer {
+      position: fixed;
+      z-index: 80;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: min(460px, 100%);
+      background: var(--paper);
+      transform: translateX(105%);
+      transition: .35s cubic-bezier(.2,.8,.2,1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -25px 0 80px rgba(0,0,0,.2);
+    }
+    .cart-drawer.show { transform: translateX(0); }
+    .cart-head { padding: 22px 24px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .cart-head h3 { font-size: 27px; }
+    .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(18,61,42,.08); font-size: 20px; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 18px 24px; }
+    .empty-cart { text-align: center; color: var(--muted); padding: 70px 20px; }
+    .empty-cart b { display: block; color: var(--ink); font-family: "Fraunces", serif; font-size: 26px; margin-top: 15px; }
+    .cart-item { display: grid; grid-template-columns: 74px 1fr auto; gap: 13px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .cart-item img { width: 74px; height: 74px; object-fit: cover; border-radius: 14px; }
+    .cart-item h4 { margin: 3px 0 8px; font-size: 14px; }
+    .qty { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+    .qty button { border: 0; background: transparent; width: 28px; height: 28px; }
+    .qty span { width: 25px; display: grid; place-items: center; font-size: 12px; }
+    .remove { border: 0; background: transparent; color: #a05242; font-size: 12px; padding: 0; margin-top: 8px; }
+    .cart-foot { padding: 22px 24px 28px; border-top: 1px solid var(--line); background: white; }
+    .total-row { display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; margin-bottom: 14px; }
+    .full { width: 100%; }
+    .fine-print { color: var(--muted); font-size: 10px; line-height: 1.5; margin-top: 10px; }
+
+    .checkout-modal {
+      position: fixed;
+      z-index: 90;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -45%) scale(.97);
+      width: min(960px, calc(100% - 28px));
+      max-height: 92vh;
+      overflow-y: auto;
+      background: var(--paper);
+      border-radius: 28px;
+      box-shadow: 0 40px 120px rgba(0,0,0,.32);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+    .checkout-modal.show { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+    .checkout-head { padding: 22px 26px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+    .checkout-head h3 { font-size: 28px; }
+    .checkout-grid { display: grid; grid-template-columns: 1.12fr .88fr; }
+    .checkout-form { padding: 26px; }
+    .summary-box { padding: 26px; background: rgba(219,233,154,.22); border-left: 1px solid var(--line); }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: block; font-size: 12px; font-weight: 800; margin-bottom: 7px; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 13px 14px;
+      background: white;
+      color: var(--ink);
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--leaf); box-shadow: 0 0 0 4px rgba(139,174,92,.13); }
+    textarea { resize: vertical; min-height: 92px; }
+    .field { margin-bottom: 14px; }
+    .payment-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0; }
+    .payment-option { position: relative; }
+    .payment-option input { position: absolute; opacity: 0; }
+    .payment-option label {
+      min-height: 82px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 12px;
+      background: white;
+      cursor: pointer;
+    }
+    .payment-option label small { color: var(--muted); font-weight: 500; }
+    .payment-option input:checked + label { border-color: var(--forest); background: rgba(219,233,154,.28); box-shadow: inset 0 0 0 1px var(--forest); }
+    .summary-items { margin: 18px 0; }
+    .summary-line { display: flex; justify-content: space-between; gap: 15px; padding: 9px 0; border-bottom: 1px dashed rgba(23,49,38,.16); font-size: 13px; }
+    .summary-total { display: flex; justify-content: space-between; font-size: 20px; font-weight: 800; padding-top: 16px; }
+    .trust-note { margin-top: 18px; padding: 14px; border-radius: 14px; background: white; color: var(--muted); font-size: 11px; line-height: 1.5; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 30px);
+      background: var(--forest);
+      color: white;
+      border-radius: 999px;
+      padding: 13px 19px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 120;
+      transition: .25s ease;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 50px; }
+      .hero-visual { min-height: 580px; }
+      .product-card { grid-column: span 6; }
+      .product-card:nth-child(5) { grid-column: span 12; }
+      .story-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .stockist { grid-template-columns: 1fr; margin-inline: 20px; }
+      .checkout-grid { grid-template-columns: 1fr; }
+      .summary-box { border-left: 0; border-top: 1px solid var(--line); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 640px) {
+      .announcement { font-size: 11px; }
+      .nav { padding: 14px 16px; }
+      .brand { font-size: 18px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .ghost-btn { display: none; }
+      .cart-btn { padding: 11px 14px; }
+      .hero { padding: 38px 18px 70px; gap: 28px; }
+      h1 { font-size: 56px; }
+      .hero-copy > p { font-size: 16px; }
+      .hero-visual { min-height: 475px; }
+      .hero-photo { inset: 0 15px 25px 10px; }
+      .floating-card.one { width: 155px; top: 50px; }
+      .floating-card.two { width: 190px; bottom: 0; }
+      .section-shell { padding: 78px 18px; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .section-head h2 { font-size: 48px; }
+      .product-grid { display: block; }
+      .product-card { min-height: auto; margin-bottom: 16px; }
+      .product-image { height: 260px; }
+      .story-grid { padding: 78px 18px; gap: 45px; }
+      .story-collage { min-height: 460px; }
+      .story-main { inset: 0 55px 45px 0; }
+      .story-small { width: 180px; height: 210px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-card { min-height: 230px; }
+      .stockist { padding: 34px 24px; border-radius: 28px; }
+      .field-grid, .payment-options { grid-template-columns: 1fr; }
+      .checkout-form, .summary-box { padding: 20px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Penghantaran terus ke rumah dan pilihan cawangan Jaya Grocer sekitar Kuala Lumpur</div>
+
+  <header class="nav">
+    <a href="#home" class="brand" aria-label="Acik Vegan home">
+      <span class="brand-mark">✦</span>
+      <span>ACIK VEGAN</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#produk">Produk</a>
+      <a href="#cerita">Cerita Kami</a>
+      <a href="#proses">Proses</a>
+      <a href="#lokasi">Dapatkan</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="ghost-btn" href="https://www.facebook.com/profile.php?id=100086507471448" target="_blank" rel="noopener">Facebook</a>
+      <button class="cart-btn" id="openCart">Troli <span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> Tempe Malaysia, diinovasikan</span>
+        <h1>Baik untuk usus. <em>Baik untuk bumi.</em></h1>
+        <p>Tempe segar berasaskan tumbuhan, dibuat dalam kelompok kecil menggunakan edamame, soya putih, soya hitam, kacang kuda dan lima jenis kacang.</p>
+        <div class="hero-buttons">
+          <a href="#produk" class="primary-btn">Teroka 5 jenis tempe</a>
+          <a href="#cerita" class="secondary-btn">Kenali misi kami</a>
+        </div>
+        <div class="proof-row">
+          <span><b>✓</b> 100% berasaskan tumbuhan</span>
+          <span><b>✓</b> Fermentasi segar</span>
+          <span><b>✓</b> Sokong komuniti tempatan</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Acik Vegan tempe products">
+        <div class="hero-photo">
+          <img src="https://cdn.mingguanwanita.my/2026/07/Tempe-Malaysia-696x365.jpg.webp" alt="Pilihan tempe Acik Vegan" />
+        </div>
+        <div class="floating-card one">
+          <span class="float-label">Satu jenama</span>
+          <div class="float-value">5 profil rasa</div>
+          <div class="bean-dots"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="floating-card two">
+          <span class="float-label">Dibungkus dengan tujuan</span>
+          <div class="float-value">Warisan bertemu inovasi.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">TEMPE EDAMAME ✦ SOYA PUTIH ✦ SOYA HITAM ✦ KACANG KUDA ✦ LIMA JENIS KACANG ✦ TEMPE EDAMAME ✦ SOYA PUTIH ✦ SOYA HITAM ✦ KACANG KUDA ✦ LIMA JENIS KACANG ✦ </div>
+    </div>
+
+    <section class="section-shell" id="produk">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow"><i></i> Katalog produk</span>
+          <h2 style="margin-top:18px">Pilih kacang anda.</h2>
+        </div>
+        <p>Setiap kacang mempunyai tekstur, rasa dan profil nutrisi tersendiri. Pilih satu kegemaran atau cuba kesemuanya.</p>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <div class="price-note">*Harga pada prototaip ini ialah harga demo dan perlu disahkan oleh Acik Vegan sebelum pelancaran.</div>
+    </section>
+
+    <section class="story-wrap" id="cerita">
+      <div class="story-grid">
+        <div class="story-collage">
+          <div class="story-main">
+            <img src="https://cdn.mingguanwanita.my/2026/07/736088865_17975105946107071_5170124067473169153_n.webp" alt="Proses dan komuniti Acik Vegan" />
+          </div>
+          <div class="story-small">
+            <img src="https://cdn.mingguanwanita.my/2026/07/734181781_17975105955107071_739852255381717195_n.webp" alt="Daun pembungkus tempe tradisional" />
+          </div>
+        </div>
+        <div class="story-copy">
+          <span class="eyebrow" style="border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.05)"><i></i> Cerita Acik Vegan</span>
+          <h2 style="margin-top:22px">Dari dapur kecil, kepada <em>impak besar.</em></h2>
+          <p>Pengasas Acik Vegan, Lia Ahmad Ramli, menggabungkan fermentasi tradisional dengan R&amp;D untuk menghasilkan tempe daripada lima jenis kekacang. Setiap formulasi diuji untuk mendapatkan tekstur dan rasa yang konsisten.</p>
+          <div class="impact-list">
+            <div class="impact-item"><span class="impact-icon">♧</span><div><b>Sokong Orang Asli</b><small>Daun pembungkus tradisional diperoleh melalui kerjasama dengan komuniti Orang Asli.</small></div></div>
+            <div class="impact-item"><span class="impact-icon">⌂</span><div><b>Bahan tempatan</b><small>Rantaian bekalan yang membantu petani dan ekonomi komuniti setempat.</small></div></div>
+            <div class="impact-item"><span class="impact-icon">∞</span><div><b>Kurang pembaziran</b><small>Pembungkusan berasaskan daun dan proses kelompok kecil yang lebih terkawal.</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="proses">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow"><i></i> Dibuat dengan teliti</span>
+          <h2 style="margin-top:18px">Ringkas, segar, hidup.</h2>
+        </div>
+        <p>Proses fermentasi berbeza mengikut kelembapan dan tekstur setiap kekacang. Di sinilah kemahiran dan kesabaran memainkan peranan.</p>
+      </div>
+      <div class="process-grid">
+        <article class="process-card"><h3>Pilih kekacang</h3><p>Edamame, soya, kacang kuda atau campuran lima kacang dipilih mengikut karakter produk.</p></article>
+        <article class="process-card"><h3>Sedia dan masak</h3><p>Kacang dibersihkan dan disediakan untuk mencapai tahap kelembapan yang sesuai.</p></article>
+        <article class="process-card"><h3>Fermentasi</h3><p>Setiap kelompok diberi masa untuk membentuk tekstur tempe yang padat dan sekata.</p></article>
+        <article class="process-card"><h3>Bungkus dan hantar</h3><p>Produk segar dibungkus dengan kemas sebelum dihantar atau disediakan untuk stokis.</p></article>
+      </div>
+    </section>
+
+    <section class="stockist" id="lokasi">
+      <div>
+        <span class="eyebrow"><i></i> Mudah didapati</span>
+        <h2 style="margin-top:20px">Tempe baik, lebih dekat dengan anda.</h2>
+        <p>Pesan untuk penghantaran terus ke rumah atau cari Acik Vegan di pilihan cawangan runcit sekitar Kuala Lumpur.</p>
+        <button class="primary-btn" id="shopNow">Beli dari katalog</button>
+      </div>
+      <div class="location-cards">
+        <div class="location-card"><i>⌂</i><div><b>Penghantaran terus</b><small>Pilihan penghantaran rumah, tertakluk kepada kawasan liputan.</small></div></div>
+        <div class="location-card"><i>J</i><div><b>Jaya Grocer</b><small>Tersedia di beberapa cawangan sekitar Kuala Lumpur.</small></div></div>
+        <div class="location-card"><i>F</i><div><b>Facebook Acik Vegan</b><small>Semak stok, lokasi dan pengumuman terkini.</small></div></div>
+      </div>
+    </section>
+
+    <section class="section-shell" style="padding-top:0">
+      <div class="section-head">
+        <div><span class="eyebrow"><i></i> Soalan lazim</span><h2 style="margin-top:18px">Sebelum anda pesan.</h2></div>
+      </div>
+      <div class="faq-grid">
+        <details><summary>Apakah perbezaan lima jenis tempe?</summary><p>Setiap kekacang memberikan rasa, tekstur dan profil nutrisi yang berbeza. Edamame lebih segar dan lembut, soya putih lebih klasik, manakala soya hitam, kacang kuda dan campuran lima kacang menawarkan karakter yang lebih berani.</p></details>
+        <details><summary>Bagaimana cara menyimpan tempe?</summary><p>Simpan dalam peti sejuk selepas diterima. Untuk tempoh simpanan lebih panjang, tempe boleh dibekukan dalam bekas atau beg yang tertutup kemas.</p></details>
+        <details><summary>Adakah produk ini sesuai untuk vegan?</summary><p>Jenama memposisikan produknya sebagai 100% berasaskan tumbuhan. Maklumat ramuan, alergen dan pensijilan akhir perlu disahkan pada label produk sebenar.</p></details>
+        <details><summary>Bagaimana pembayaran dibuat?</summary><p>Prototaip ini menyediakan aliran checkout untuk FPX, kad dan DuitNow QR. Sambungan transaksi sebenar akan diaktifkan selepas akaun merchant dan kunci API Billplz atau ToyyibPay diberikan.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-shell">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand"><span class="brand-mark" style="background:var(--lime);color:var(--forest)">✦</span><span>ACIK VEGAN</span></div>
+          <p>Tempe Malaysia yang membawa rasa baharu, pilihan lebih luas dan manfaat kepada komuniti dalam setiap pembelian.</p>
+        </div>
+        <div class="footer-col"><b>Teroka</b><a href="#produk">Produk</a><a href="#cerita">Cerita Kami</a><a href="#proses">Proses</a><a href="#lokasi">Dapatkan</a></div>
+        <div class="footer-col"><b>Ikuti</b><a href="https://www.facebook.com/profile.php?id=100086507471448" target="_blank" rel="noopener">Facebook Acik Vegan</a><a href="https://www.threads.com/@mohamadjamalee" target="_blank" rel="noopener">Liputan di Threads</a><a href="https://www.mingguanwanita.my/tempe-malaysia-acik-vegan-5-jenis-kacang/" target="_blank" rel="noopener">Mingguan Wanita</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Acik Vegan. Konsep laman web oleh Shukry Design Build.</span>
+        <span>Prototaip jualan. Harga, stok, ramuan, pensijilan dan kawasan penghantaran perlu disahkan pemilik jenama. Imej bersumber daripada kandungan awam Acik Vegan dan liputan Mingguan Wanita untuk tujuan demonstrasi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-head"><h3>Troli anda</h3><button class="icon-btn" id="closeCart" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="total-row"><span>Jumlah</span><span id="cartTotal">RM0.00</span></div>
+      <button class="primary-btn full" id="checkoutBtn">Teruskan ke pembayaran</button>
+      <div class="fine-print">Harga demo. Caj penghantaran dan jumlah akhir akan disahkan semasa checkout.</div>
+    </div>
+  </aside>
+
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <section class="checkout-modal" id="checkoutModal" aria-label="Checkout">
+    <div class="checkout-head"><h3>Checkout selamat</h3><button class="icon-btn" id="closeCheckout" aria-label="Close checkout">×</button></div>
+    <div class="checkout-grid">
+      <form class="checkout-form" id="checkoutForm">
+        <div class="field-grid">
+          <div class="field"><label for="name">Nama penuh</label><input id="name" name="name" required autocomplete="name" /></div>
+          <div class="field"><label for="phone">No. telefon</label><input id="phone" name="phone" required autocomplete="tel" placeholder="01X-XXXXXXX" /></div>
+        </div>
+        <div class="field"><label for="email">E-mel</label><input id="email" name="email" type="email" autocomplete="email" /></div>
+        <div class="field"><label for="address">Alamat penghantaran</label><textarea id="address" name="address" required autocomplete="street-address"></textarea></div>
+        <div class="field-grid">
+          <div class="field"><label for="postcode">Poskod</label><input id="postcode" name="postcode" required inputmode="numeric" /></div>
+          <div class="field"><label for="delivery">Pilihan penghantaran</label><select id="delivery" name="delivery"><option value="8">Penghantaran standard, RM8</option><option value="0">Ambil sendiri, RM0</option></select></div>
+        </div>
+        <label>Kaedah pembayaran</label>
+        <div class="payment-options">
+          <div class="payment-option"><input type="radio" name="payment" id="fpx" value="FPX" checked /><label for="fpx"><b>FPX Online Banking</b><small>Billplz atau ToyyibPay</small></label></div>
+          <div class="payment-option"><input type="radio" name="payment" id="card" value="Kad" /><label for="card"><b>Kad debit / kredit</b><small>Gateway merchant</small></label></div>
+          <div class="payment-option"><input type="radio" name="payment" id="duitnow" value="DuitNow QR" /><label for="duitnow"><b>DuitNow QR</b><small>Pengesahan automatik</small></label></div>
+        </div>
+        <button class="primary-btn full" type="submit">Bayar dengan selamat</button>
+        <div class="fine-print">Pembayaran sebenar belum diaktifkan. Kunci API merchant diperlukan dan tidak boleh disimpan terus dalam GitHub Pages.</div>
+      </form>
+      <div class="summary-box">
+        <span class="eyebrow"><i></i> Ringkasan pesanan</span>
+        <div class="summary-items" id="summaryItems"></div>
+        <div class="summary-line"><span>Subtotal</span><b id="summarySubtotal">RM0.00</b></div>
+        <div class="summary-line"><span>Penghantaran</span><b id="summaryShipping">RM8.00</b></div>
+        <div class="summary-total"><span>Jumlah</span><span id="summaryTotal">RM0.00</span></div>
+        <div class="trust-note">🔒 Untuk pelancaran sebenar, pelanggan akan dihantar ke halaman pembayaran FPX yang dihoskan oleh Billplz atau ToyyibPay. Kunci rahsia merchant kekal di serverless backend, bukan dalam kod laman awam.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast">Ditambah ke troli</div>
+
+  <script>
+    const PAYMENT_GATEWAY_URL = ""; // Masukkan URL payment form Billplz atau ToyyibPay selepas akaun merchant disahkan.
+
+    const products = [
+      {
+        id: "edamame",
+        name: "Tempe Edamame",
+        price: 14,
+        tag: "Segar & hijau",
+        desc: "Tekstur lembut dengan rasa edamame yang bersih dan sedikit manis.",
+        image: "https://cdn.mingguanwanita.my/2026/07/669632958_940676045492636_1864428521032994864_n-225x300.jpg.webp"
+      },
+      {
+        id: "soya-putih",
+        name: "Tempe Soya Putih",
+        price: 9,
+        tag: "Klasik",
+        desc: "Profil tempe tradisional yang serba guna untuk goreng, sambal dan lauk harian.",
+        image: "https://cdn.mingguanwanita.my/2026/07/663197399_935304342696473_2978251209985088667_n-169x300.jpg.webp"
+      },
+      {
+        id: "soya-hitam",
+        name: "Tempe Soya Hitam",
+        price: 13,
+        tag: "Lebih berani",
+        desc: "Rasa kekacang yang lebih dalam dengan tekstur padat dan warna semula jadi.",
+        image: "https://cdn.mingguanwanita.my/2026/07/659058837_935304266029814_3853018171528565296_n-169x300.jpg.webp"
+      },
+      {
+        id: "kacang-kuda",
+        name: "Tempe Kacang Kuda",
+        price: 13,
+        tag: "Lemak & nutty",
+        desc: "Kacang kuda menghasilkan tempe berkrim dengan karakter rasa yang unik.",
+        image: "https://cdn.mingguanwanita.my/2026/07/724429723_996063749953865_1678021879617893556_n-194x300.jpg.webp"
+      },
+      {
+        id: "lima-kacang",
+        name: "Tempe Lima Jenis Kacang",
+        price: 15,
+        tag: "Paling istimewa",
+        desc: "Campuran lima kekacang untuk tekstur, warna dan pengalaman rasa yang lebih kompleks.",
+        image: "https://cdn.mingguanwanita.my/2026/07/742998638_17975713407107071_356704856184633601_n.webp"
+      }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem("acikVeganCart") || "{}");
+    const money = value => `RM${Number(value).toFixed(2)}`;
+    const productGrid = document.getElementById("productGrid");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+    const checkoutModal = document.getElementById("checkoutModal");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const checkoutForm = document.getElementById("checkoutForm");
+    const deliverySelect = document.getElementById("delivery");
+    const toast = document.getElementById("toast");
+
+    function renderProducts() {
+      productGrid.innerHTML = products.map(product => `
+        <article class="product-card">
+          <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy" /></div>
+          <div class="product-body">
+            <div class="tag-row"><span class="tag">${product.tag}</span><span class="price">${money(product.price)}*</span></div>
+            <h3>${product.name}</h3>
+            <p>${product.desc}</p>
+            <button class="add-btn" data-add="${product.id}"><span>Tambah ke troli</span><span>＋</span></button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function saveCart() {
+      localStorage.setItem("acikVeganCart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function cartLines() {
+      return products.filter(p => cart[p.id]).map(p => ({ ...p, qty: cart[p.id] }));
+    }
+
+    function subtotal() {
+      return cartLines().reduce((sum, item) => sum + item.price * item.qty, 0);
+    }
+
+    function renderCart() {
+      const lines = cartLines();
+      const count = lines.reduce((sum, item) => sum + item.qty, 0);
+      cartCount.textContent = count;
+      cartTotal.textContent = money(subtotal());
+
+      if (!lines.length) {
+        cartItems.innerHTML = `<div class="empty-cart"><div style="font-size:48px">◌</div><b>Troli masih kosong</b><p>Pilih satu daripada lima jenis tempe kami.</p></div>`;
+      } else {
+        cartItems.innerHTML = lines.map(item => `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" />
+            <div><h4>${item.name}</h4><div class="qty"><button data-minus="${item.id}">−</button><span>${item.qty}</span><button data-plus="${item.id}">＋</button></div><br><button class="remove" data-remove="${item.id}">Buang</button></div>
+            <b>${money(item.price * item.qty)}</b>
+          </div>
+        `).join("");
+      }
+      renderSummary();
+    }
+
+    function renderSummary() {
+      const lines = cartLines();
+      const shipping = Number(deliverySelect.value || 8);
+      document.getElementById("summaryItems").innerHTML = lines.map(item => `<div class="summary-line"><span>${item.qty} × ${item.name}</span><b>${money(item.qty * item.price)}</b></div>`).join("") || `<p style="color:var(--muted)">Tiada produk dipilih.</p>`;
+      document.getElementById("summarySubtotal").textContent = money(subtotal());
+      document.getElementById("summaryShipping").textContent = money(shipping);
+      document.getElementById("summaryTotal").textContent = money(subtotal() + shipping);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function openCart() {
+      cartDrawer.classList.add("show");
+      cartOverlay.classList.add("show");
+      document.body.classList.add("cart-open");
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove("show");
+      cartOverlay.classList.remove("show");
+      document.body.classList.remove("cart-open");
+    }
+
+    function openCheckout() {
+      if (!cartLines().length) { showToast("Tambah produk dahulu"); return; }
+      closeCart();
+      renderSummary();
+      checkoutModal.classList.add("show");
+      modalOverlay.classList.add("show");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeCheckout() {
+      checkoutModal.classList.remove("show");
+      modalOverlay.classList.remove("show");
+      document.body.classList.remove("modal-open");
+    }
+
+    document.addEventListener("click", event => {
+      const add = event.target.closest("[data-add]");
+      const plus = event.target.closest("[data-plus]");
+      const minus = event.target.closest("[data-minus]");
+      const remove = event.target.closest("[data-remove]");
+      if (add) { const id = add.dataset.add; cart[id] = (cart[id] || 0) + 1; saveCart(); showToast("Ditambah ke troli"); }
+      if (plus) { cart[plus.dataset.plus] += 1; saveCart(); }
+      if (minus) { const id = minus.dataset.minus; cart[id] -= 1; if (cart[id] <= 0) delete cart[id]; saveCart(); }
+      if (remove) { delete cart[remove.dataset.remove]; saveCart(); }
+    });
+
+    document.getElementById("openCart").addEventListener("click", openCart);
+    document.getElementById("closeCart").addEventListener("click", closeCart);
+    cartOverlay.addEventListener("click", closeCart);
+    document.getElementById("checkoutBtn").addEventListener("click", openCheckout);
+    document.getElementById("closeCheckout").addEventListener("click", closeCheckout);
+    modalOverlay.addEventListener("click", closeCheckout);
+    document.getElementById("shopNow").addEventListener("click", () => document.getElementById("produk").scrollIntoView({ behavior: "smooth" }));
+    deliverySelect.addEventListener("change", renderSummary);
+
+    checkoutForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(checkoutForm).entries());
+      const order = {
+        reference: `AV-${Date.now().toString().slice(-8)}`,
+        customer: data,
+        items: cartLines(),
+        subtotal: subtotal(),
+        shipping: Number(data.delivery),
+        total: subtotal() + Number(data.delivery),
+        createdAt: new Date().toISOString()
+      };
+      localStorage.setItem("acikVeganPendingOrder", JSON.stringify(order));
+
+      if (PAYMENT_GATEWAY_URL) {
+        window.location.href = PAYMENT_GATEWAY_URL;
+      } else {
+        closeCheckout();
+        showToast(`Pesanan ${order.reference} disimpan sebagai demo`);
+        setTimeout(() => alert(`Prototaip checkout berjaya.\n\nRujukan: ${order.reference}\nJumlah: ${money(order.total)}\nKaedah: ${data.payment}\n\nUntuk transaksi sebenar, sambungkan endpoint Billplz atau ToyyibPay melalui backend serverless.`), 250);
+      }
+    });
+
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>

@@ -23,12 +23,46 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Prepare payment configuration
+        env:
+          PAYMENT_API_BASE: ${{ vars.PAYMENT_API_BASE }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          api_base = os.environ.get("PAYMENT_API_BASE", "").strip().rstrip("/")
+          Path("payment-config.js").write_text(
+              "window.ACIK_PAYMENT_API_BASE = " + json.dumps(api_base) + ";\n",
+              encoding="utf-8",
+          )
+
+          index = Path("index.html")
+          text = index.read_text(encoding="utf-8")
+          scripts = '<script src="./payment-config.js"></script><script src="./payment-client.js"></script>'
+          if "payment-client.js" not in text:
+              text = text.replace("</body>", scripts + "\n</body>")
+          index.write_text(text, encoding="utf-8")
+
+          result_page = Path("payment-result.html")
+          result_text = result_page.read_text(encoding="utf-8")
+          result_text = result_text.replace(
+              'const PAYMENT_API_BASE = "";',
+              'const PAYMENT_API_BASE = ' + json.dumps(api_base) + ';',
+          )
+          result_page.write_text(result_text, encoding="utf-8")
+          PY
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
